@@ -17,10 +17,10 @@ import { useContactForm } from "./hooks-contact-form/use-contact-form";
 
 const services = createListCollection({
     items: [
-        { label: "Quero marcar uma consulta", value: "Marcar uma consulta" },
-        { label: "Quero saber mais sobre psicoterapia", value: "Psicoterapia" },
-        { label: "Quero saber mais sobre hipnoterapia", value: "Hipnoterapia" },
-        { label: "Prefiro falar diretamente com o profissional", value: "Falar diretamente com o profissional" }
+        { label: "Quero marcar uma consulta", value: "marcar uma consulta" },
+        { label: "Quero saber mais sobre psicoterapia", value: "saber mais sobre psicoterapia" },
+        { label: "Quero saber mais sobre hipnoterapia", value: "saber mais sobre hipnoterapia" },
+        { label: "Prefiro falar diretamente com o profissional", value: "falar diretamente consigo" }
     ]
 })
 

@@ -11,12 +11,12 @@ import { ServicesSection } from "./pages/home/ServicesSection"
 import { TestimonialsSection } from "./pages/home/TestimonialsSection"
 
 function App() {
-  
-useEffect(() => {
-  AOS.init({ 
-    duration: 800,
-  });
-}, []);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+    });
+  }, []);
 
   return (
     <Box w="100%" h="100%" bgColor="white">
@@ -24,9 +24,9 @@ useEffect(() => {
       <HeroSection />
       <AboutSection />
       <ServicesSection />
-   <TestimonialsSection />
-    <ContactForm /> 
-     <Footer />
+      <TestimonialsSection />
+      <ContactForm />
+      <Footer />
     </Box>
   )
 }

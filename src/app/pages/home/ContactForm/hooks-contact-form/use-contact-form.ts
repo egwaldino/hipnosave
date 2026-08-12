@@ -12,7 +12,7 @@ export function useContactForm() {
     const selectedReason = reason[0];
     const text = [
       `Olá, Dr. Bernardo. O meu nome é ${name}.`,
-      selectedReason && `Gostaria de falar sobre: ${selectedReason}.`,
+      selectedReason && `Gostaria de ${selectedReason}.`,
       message,
     ].filter(Boolean).join(" ");
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
