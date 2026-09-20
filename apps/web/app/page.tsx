@@ -1,21 +1,24 @@
-import { About } from "@/components/landing/About";
-import { ContactForm } from "@/components/landing/ContactForm";
-import { Footer } from "@/components/landing/Footer";
-import { Header } from "@/components/landing/Header";
-import { Hero } from "@/components/landing/Hero";
-import { Services } from "@/components/landing/Services";
-import { Testimonials } from "@/components/landing/Testimonials";
+import { About } from "@/components/landing/about/About";
+import { Blog } from "@/components/landing/blog/Blog";
+import { Faq } from "@/components/landing/faq/Faq";
+import { Footer } from "@/components/landing/footer/Footer";
+import { Hero } from "@/components/landing/hero/Hero";
+import { Services } from "@/components/landing/services/Services";
+import { Stats } from "@/components/landing/stats/Stats";
+import { Testimonials } from "@/components/landing/testimonials/Testimonials";
+import { TrustedBy } from "@/components/landing/trusted-by/TrustedBy";
 
-// TODO: montar a home com Header, Hero, About, Services, Testimonials, ContactForm, Footer
 export default function HomePage() {
   return (
     <div>
-      <Header />
       <Hero />
-      <About />
       <Services />
+      <About />
+      <Stats />
+      <TrustedBy />
       <Testimonials />
-      <ContactForm />
+      <Blog />
+      <Faq />
       <Footer />
     </div>
   );
