@@ -25,7 +25,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 md:grid-cols-[1.2fr_1fr_1fr] md:px-8">
         <div>
           <Image
-            src="/logo-hipnosave-on-dark.png"
+            src="/logo-hipnosave-on-dark.webp"
             alt="HipnoSave — Consultório de Hipnoterapia"
             width={166}
             height={110}

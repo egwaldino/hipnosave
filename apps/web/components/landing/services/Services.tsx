@@ -49,7 +49,7 @@ export function Services() {
               className="relative block aspect-square transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-[1.03]"
             >
               <Image
-                src={`/services/${concern.slug}.png`}
+                src={`/services/${concern.slug}.webp`}
                 alt={concern.name}
                 fill
                 className="object-contain"

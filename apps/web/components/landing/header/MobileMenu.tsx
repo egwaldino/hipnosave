@@ -46,7 +46,7 @@ export function MobileMenu({ navLinks, isScrolled }: MobileMenuProps) {
       >
         <div className="flex items-center justify-between">
           <Image
-            src={resolvedTheme === "dark" ? "/logo-hipnosave-on-dark.png" : "/logo-hipnosave.webp"}
+            src={resolvedTheme === "dark" ? "/logo-hipnosave-on-dark.webp" : "/logo-hipnosave.webp"}
             alt="HipnoSave — Consultório de Hipnoterapia"
             width={130}
             height={86}
