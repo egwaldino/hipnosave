@@ -23,7 +23,7 @@ export function LogoMarqueeRow({ entities, reverse, className }: LogoMarqueeRowP
 
   return (
     <div
-      className={`overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] ${className ?? ""}`}
+      className={`overflow-hidden mask-[linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] ${className ?? ""}`}
     >
       <div
         className={`flex w-max items-center gap-10 md:gap-25 ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}

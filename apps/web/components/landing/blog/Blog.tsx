@@ -59,7 +59,7 @@ export function Blog() {
                 index >= 4 ? "hidden sm:block" : ""
               }`}
             >
-              <div className="aspect-video bg-gradient-to-br from-brand-500/40 to-ink-600" />
+              <div className="aspect-video bg-linear-to-br from-brand-500/40 to-ink-600" />
               <div className="p-5">
                 <div className="flex items-center justify-between text-xs font-semibold text-ink-400 dark:text-sand-100/60">
                   <span className="rounded bg-brand-500/10 px-2 py-1 text-brand-600 uppercase dark:bg-brand-500/20 dark:text-white">

@@ -4,7 +4,7 @@ export function About() {
   return (
     <section id="sobre" className="bg-sand-50 py-20 sm:py-28 dark:bg-ink-900">
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 md:grid-cols-2 md:gap-16 md:px-8">
-        <div className="relative max-w-[430px] overflow-hidden rounded-[19px]">
+        <div className="relative max-w-107.5 overflow-hidden rounded-[19px]">
           <Image
             src="/bernardo-cassuende-portrait.png"
             alt="Bernardo Cassuende — Psicólogo e Hipnoterapeuta"
