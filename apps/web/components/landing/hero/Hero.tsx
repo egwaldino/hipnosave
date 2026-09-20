@@ -6,7 +6,7 @@ export function Hero() {
   return (
     <section className="relative flex min-h-screen flex-col bg-ink-900">
       <Image
-        src="/hero-background.png"
+        src="/hero-background.webp"
         alt=""
         fill
         priority

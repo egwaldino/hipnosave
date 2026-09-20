@@ -34,7 +34,7 @@ export function LogoMarqueeRow({ entities, reverse, className }: LogoMarqueeRowP
           return (
             <Image
               key={`${entity.slug}-${index}`}
-              src={`/trusted-by/${entity.slug}${suffix}.png`}
+              src={`/trusted-by/${entity.slug}${suffix}.webp`}
               alt={entity.name}
               width={120}
               height={60}

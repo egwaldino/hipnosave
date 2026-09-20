@@ -33,7 +33,7 @@ export function Header() {
       <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 md:px-8">
         <a href="/" className="shrink-0">
           <Image
-            src={isLightLogo ? "/logo-hipnosave.webp" : "/logo-hipnosave-on-dark.png"}
+            src={isLightLogo ? "/logo-hipnosave.webp" : "/logo-hipnosave-on-dark.webp"}
             alt="HipnoSave — Consultório de Hipnoterapia"
             width={130}
             height={86}

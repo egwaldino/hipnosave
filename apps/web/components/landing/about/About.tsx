@@ -6,7 +6,7 @@ export function About() {
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 md:grid-cols-2 md:gap-16 md:px-8">
         <div className="relative max-w-107.5 overflow-hidden rounded-[19px]">
           <Image
-            src="/bernardo-cassuende-portrait.png"
+            src="/bernardo-cassuende-portrait.webp"
             alt="Bernardo Cassuende — Psicólogo e Hipnoterapeuta"
             width={860}
             height={1004}
