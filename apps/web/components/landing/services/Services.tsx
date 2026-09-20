@@ -30,7 +30,10 @@ export function Services() {
   });
 
   return (
-    <section id="servicos" className="bg-sand-100/60 py-20 sm:py-28 dark:bg-ink-900">
+    <section
+      id="servicos"
+      className="bg-[#D9D9D9]/30 py-20 sm:py-28 dark:bg-ink-900"
+    >
       <div className="mx-auto max-w-6xl px-4 md:px-8">
         <SectionHeading
           eyebrow="Como podemos ajudar"
