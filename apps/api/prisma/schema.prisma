@@ -1,0 +1,49 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model OwnerUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime @default(now())
+}
+
+model AvailabilitySlot {
+  id          String        @id @default(cuid())
+  date        String
+  startTime   String
+  endTime     String
+  isBooked    Boolean       @default(false)
+  createdAt   DateTime      @default(now())
+  appointment Appointment?
+
+  @@unique([date, startTime, endTime])
+  @@index([date])
+}
+
+enum AppointmentStatus {
+  pending
+  confirmed
+  cancelled
+}
+
+model Appointment {
+  id            String            @id @default(cuid())
+  slotId        String            @unique
+  slot          AvailabilitySlot  @relation(fields: [slotId], references: [id])
+  patientName   String
+  patientPhone  String
+  patientEmail  String?
+  reason        String?
+  notes         String?
+  status        AppointmentStatus @default(pending)
+  createdAt     DateTime          @default(now())
+}
