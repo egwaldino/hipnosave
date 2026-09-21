@@ -1,17 +1,13 @@
 import Link from "next/link";
 import { ArrowDown, ArrowRight, ChevronRight, Info, X } from "lucide-react";
 import { DialogClose, DialogContent } from "@/components/ui/dialog";
+import { SOS_SERVICE } from "@/components/scheduling/service-selection/services-data";
 
 const ALERT_SIGNS = [
   "Crises de ansiedade",
   "Ideação suicida",
   "Sintomas físicos intensos",
   "Quebra funcional repentina",
-];
-
-const PRICING = [
-  { label: "Psicologia", price: "AOA 35.000,00", duration: "50 min" },
-  { label: "Psiquiatria", price: "AOA 40.000,00", duration: "30 min" },
 ];
 
 export function SosDialogContent() {
@@ -64,17 +60,13 @@ export function SosDialogContent() {
           <p className="text-xs font-semibold tracking-wide text-ink-500 uppercase dark:text-ink-300">
             Valor da consulta SOS
           </p>
-          <div className="mt-4 grid grid-cols-2 divide-x divide-ink-900/10 dark:divide-white/10">
-            {PRICING.map((item) => (
-              <div key={item.label} className="px-4 first:pl-0">
-                <p className="text-sm font-medium">{item.label}</p>
-                <p className="mt-1 text-xl font-extrabold">{item.price}</p>
-                <p className="text-sm text-ink-500 dark:text-ink-300">{item.duration}</p>
-              </div>
-            ))}
+          <div className="mt-4">
+            <p className="text-sm font-medium">Psicologia e Hipnoterapia</p>
+            <p className="mt-1 text-xl font-extrabold">{SOS_SERVICE.price}</p>
+            <p className="text-sm text-ink-500 dark:text-ink-300">{SOS_SERVICE.duration}</p>
           </div>
           <Link
-            href="/em-construcao"
+            href="/scheduling-page?servico=sos"
             className="mt-5 flex h-14 items-center justify-center gap-2 rounded-2xl bg-sos-500 text-base font-bold text-white shadow-[0_0_30px_rgba(232,87,58,0.35)] sm:mt-auto"
           >
             Marcar Agora

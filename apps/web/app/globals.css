@@ -91,6 +91,15 @@ html {
   display: none;
 }
 
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+a,
+label[for],
+select,
+summary {
+  cursor: pointer;
+}
+
 @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);

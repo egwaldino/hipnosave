@@ -85,7 +85,7 @@ export function Header() {
           />
 
           <Link
-            href="/em-construcao"
+            href="/scheduling-page"
             className="order-4 hidden h-11 w-38 items-center justify-center rounded-xl bg-brand-500 text-sm font-semibold text-[#f5f5f5] drop-shadow-[0_0_16px_rgba(43,89,255,0.35)] transition hover:bg-brand-600 md:order-3 md:flex"
           >
             Marcar Consulta
