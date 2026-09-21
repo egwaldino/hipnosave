@@ -82,7 +82,7 @@ export function MobileMenu({ navLinks, isScrolled }: MobileMenuProps) {
 
         <div className="mt-auto flex flex-col gap-3">
           <DialogClose
-            render={<Link href="/em-construcao" />}
+            render={<Link href="/scheduling-page" />}
             className="flex h-14 items-center justify-center rounded-xl bg-brand-500 text-base font-semibold text-white"
           >
             Marcar Consulta

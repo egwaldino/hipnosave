@@ -45,7 +45,7 @@ export function Services() {
           {visibleItems.map((concern) => (
             <Link
               key={concern.slug}
-              href="/em-construcao"
+              href={`/scheduling-page?servico=${concern.slug}`}
               className="relative block aspect-square transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-[1.03]"
             >
               <Image

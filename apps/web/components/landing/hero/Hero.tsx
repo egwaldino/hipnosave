@@ -30,7 +30,7 @@ export function Hero() {
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Link
-              href="/em-construcao"
+              href="/scheduling-page"
               className="flex h-13 items-center justify-center rounded-xl bg-brand-500 px-7 text-base font-semibold text-white drop-shadow-[0_0_16px_rgba(43,89,255,0.35)] transition hover:bg-brand-600"
             >
               Marcar Consulta
