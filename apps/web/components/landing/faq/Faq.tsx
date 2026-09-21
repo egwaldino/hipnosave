@@ -35,7 +35,7 @@ const FAQS = [
   {
     question: "Como posso agendar uma consulta?",
     answer:
-      "Podes marcar diretamente pelo botão \"Marcar Consulta\" no site, ou entrar em contacto por WhatsApp ou email.",
+      'Podes marcar diretamente pelo botão "Marcar Consulta" no site, ou entrar em contacto por WhatsApp ou email.',
   },
 ];
 

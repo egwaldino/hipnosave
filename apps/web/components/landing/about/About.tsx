@@ -27,25 +27,33 @@ export function About() {
           </h2>
 
           <p className="mt-6 text-base leading-relaxed text-ink-600 text-justify dark:text-sand-100/80">
-            Psicólogo e hipnoterapeuta clínico, dedicado a fornecer terapia compassiva e
-            integrativa, baseada em evidências, dando um novo significado a tua vida.
+            Psicólogo e hipnoterapeuta clínico, dedicado a fornecer terapia
+            compassiva e integrativa, baseada em evidências, dando um novo
+            significado a tua vida.
           </p>
           <p className="mt-4 text-base leading-relaxed text-ink-600 text-justify dark:text-sand-100/80">
-            Com uma formação robusta e anos de prática clínica presencial e online, integro
-            as melhores ferramentas da psicologia tradicional e da hipnose clínica para
-            garantir que cada sessão proporcione avanços mensuráveis para sua saúde mental e
-            bem-estar.
+            Com uma formação robusta e anos de prática clínica presencial e
+            online, integro as melhores ferramentas da psicologia tradicional e
+            da hipnose clínica para garantir que cada sessão proporcione avanços
+            mensuráveis para sua saúde mental e bem-estar.
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-ink-600 dark:text-sand-100/80">
+            Palestrante e formador em matérias de saúde mental e comportamental.
           </p>
 
           <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2">
             <div>
-              <h3 className="font-bold text-ink-900 dark:text-white">Cédula Profissional</h3>
+              <h3 className="font-bold text-ink-900 dark:text-white">
+                Cédula Profissional
+              </h3>
               <p className="mt-1 text-sm text-ink-500 dark:text-sand-100/70">
                 Registado na Ordem dos Psicólogos de Angola — CEP: 003973
               </p>
             </div>
             <div>
-              <h3 className="font-bold text-ink-900 dark:text-white">Especialização</h3>
+              <h3 className="font-bold text-ink-900 dark:text-white">
+                Especialização
+              </h3>
               <p className="mt-1 text-sm text-ink-500 dark:text-sand-100/70">
                 Hipnose Clínica e Ericksoniana
                 <br />

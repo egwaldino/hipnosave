@@ -42,7 +42,10 @@ const ARTICLES = [
 
 export function Blog() {
   return (
-    <section id="blog" className="bg-[#D9D9D9]/30 py-20 sm:py-28 dark:bg-white/5">
+    <section
+      id="blog"
+      className="bg-[#D9D9D9]/30 py-20 sm:py-28 dark:bg-white/5"
+    >
       <div className="mx-auto max-w-6xl px-4 md:px-8">
         <SectionHeading
           eyebrow="Espaço de conhecimento"
@@ -67,8 +70,12 @@ export function Blog() {
                   </span>
                   <span>{article.readTime}</span>
                 </div>
-                <h3 className="mt-3 font-bold text-ink-900 dark:text-white">{article.title}</h3>
-                <p className="mt-2 text-sm text-ink-500 dark:text-sand-100/70">{article.excerpt}</p>
+                <h3 className="mt-3 font-bold text-ink-900 dark:text-white">
+                  {article.title}
+                </h3>
+                <p className="mt-2 text-sm text-ink-500 dark:text-sand-100/70">
+                  {article.excerpt}
+                </p>
               </div>
             </Link>
           ))}
