@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import {
@@ -11,6 +12,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useSmoothScrollTo } from "@/lib/hooks/use-smooth-scroll-to";
+import { isSamePageAnchor } from "./Header";
 import { ThemeToggle } from "./ThemeToggle";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
@@ -23,6 +25,7 @@ interface MobileMenuProps {
 
 export function MobileMenu({ navLinks, isScrolled }: MobileMenuProps) {
   const scrollToSection = useSmoothScrollTo();
+  const pathname = usePathname();
   const { resolvedTheme } = useTheme();
 
   return (
@@ -65,11 +68,13 @@ export function MobileMenu({ navLinks, isScrolled }: MobileMenuProps) {
             <DialogClose
               key={link.label}
               render={
-                <a
+                <Link
                   href={link.href}
                   onClick={(event) => {
-                    event.preventDefault();
-                    scrollToSection(link.id);
+                    if (isSamePageAnchor(pathname, link)) {
+                      event.preventDefault();
+                      scrollToSection(link.id);
+                    }
                   }}
                 />
               }

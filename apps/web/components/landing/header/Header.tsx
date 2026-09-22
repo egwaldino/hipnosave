@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useScrollHeader } from "@/lib/hooks/use-scroll-header";
 import { useSmoothScrollTo } from "@/lib/hooks/use-smooth-scroll-to";
@@ -11,16 +12,27 @@ import { ThemeToggle } from "./ThemeToggle";
 
 export const NAV_LINKS = [
   { label: "Início", href: "/", id: undefined },
-  { label: "Serviços", href: "#servicos", id: "servicos" },
-  { label: "Sobre", href: "#sobre", id: "sobre" },
-  { label: "Blog", href: "#blog", id: "blog" },
-  { label: "Depoimentos", href: "#depoimentos", id: "depoimentos" },
-  { label: "FAQ", href: "#faq", id: "faq" },
+  { label: "Serviços", href: "/#servicos", id: "servicos" },
+  { label: "Sobre", href: "/#sobre", id: "sobre" },
+  { label: "Blog", href: "/blog", id: undefined },
+  { label: "Depoimentos", href: "/#depoimentos", id: "depoimentos" },
+  { label: "FAQ", href: "/#faq", id: "faq" },
 ];
 
-export function Header() {
-  const { isScrolled, isHidden } = useScrollHeader();
+export function isSamePageAnchor(pathname: string, link: { href: string }) {
+  return pathname === "/" && (link.href === "/" || link.href.startsWith("/#"));
+}
+
+interface HeaderProps {
+  variant?: "transparent" | "solid";
+  backHref?: string;
+}
+
+export function Header({ variant = "transparent", backHref }: HeaderProps) {
+  const { isScrolled: hasScrolled, isHidden } = useScrollHeader();
+  const isScrolled = variant === "solid" ? true : hasScrolled;
   const scrollToSection = useSmoothScrollTo();
+  const pathname = usePathname();
   const { resolvedTheme } = useTheme();
   const isLightLogo = isScrolled && resolvedTheme !== "dark";
 
@@ -31,16 +43,34 @@ export function Header() {
       } ${isHidden ? "-translate-y-full" : "translate-y-0"}`}
     >
       <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 md:px-8">
-        <a href="/" className="shrink-0">
-          <Image
-            src={isLightLogo ? "/logo-hipnosave.webp" : "/logo-hipnosave-on-dark.webp"}
-            alt="HipnoSave — Consultório de Hipnoterapia"
-            width={130}
-            height={86}
-            className="h-24 w-auto"
-            priority
-          />
-        </a>
+        <div className="flex shrink-0 items-center gap-6">
+          <a href="/" className="shrink-0">
+            <Image
+              src={isLightLogo ? "/logo-hipnosave.webp" : "/logo-hipnosave-on-dark.webp"}
+              alt="HipnoSave — Consultório de Hipnoterapia"
+              width={130}
+              height={86}
+              className="h-24 w-auto"
+              priority
+            />
+          </a>
+
+          {backHref && (
+            <>
+              <span
+                className={`hidden h-6 w-px md:block ${isScrolled ? "bg-ink-900/15 dark:bg-white/15" : "bg-sand-50/30"}`}
+              />
+              <Link
+                href={backHref}
+                className={`hidden items-center gap-1.5 text-sm font-semibold transition hover:text-sage-400 md:flex ${
+                  isScrolled ? "text-ink-900 dark:text-white" : "text-sand-50"
+                }`}
+              >
+                ← Voltar
+              </Link>
+            </>
+          )}
+        </div>
 
         <nav
           className={`hidden items-center gap-8 text-sm font-medium transition-colors duration-500 md:flex ${
@@ -48,17 +78,19 @@ export function Header() {
           }`}
         >
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.label}
               href={link.href}
               onClick={(event) => {
-                event.preventDefault();
-                scrollToSection(link.id);
+                if (isSamePageAnchor(pathname, link)) {
+                  event.preventDefault();
+                  scrollToSection(link.id);
+                }
               }}
               className="transition hover:text-sage-400"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 

@@ -29,7 +29,7 @@ export function ServiceSelection({ selectedSlug, onSelect }: ServiceSelectionPro
         </Link>
       </div>
 
-      <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[repeat(auto-fill,minmax(0,319px))] lg:justify-center">
+      <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-[repeat(auto-fill,minmax(0,319px))] lg:justify-center">
         {SERVICES.map((service) => {
           const isSelected = service.slug === selectedSlug;
 
@@ -38,36 +38,31 @@ export function ServiceSelection({ selectedSlug, onSelect }: ServiceSelectionPro
               key={service.slug}
               type="button"
               onClick={() => onSelect(service.slug)}
-              className={`flex w-full flex-col overflow-hidden rounded-2xl border-2 bg-[#F7FBFF] p-0 text-left shadow-[0px_4px_16px_rgba(0,0,0,0.078),0px_8px_20px_rgba(43,89,255,0.078)] transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-[1.03] dark:bg-white/5 ${
+              className={`group flex w-full flex-col overflow-hidden rounded-2xl border-2 bg-white text-left shadow-soft transition hover:-translate-y-1 dark:bg-white/5 ${
                 isSelected ? "border-brand-500" : "border-transparent"
               }`}
             >
-              <div className="relative h-50 w-full">
+              <div className="relative aspect-video w-full overflow-hidden">
                 <Image
                   src={`/services/${service.slug}.webp`}
                   alt={service.name}
                   fill
-                  className="object-cover object-top"
+                  className="object-cover object-top transition duration-500 group-hover:scale-105"
                 />
               </div>
 
-              <div className="flex flex-col gap-3 p-5">
-                <div className="flex flex-col gap-1.5">
-                  <h3 className="text-[17px] leading-5.25 font-bold text-[#1A2530] dark:text-white">
-                    {service.name}
-                  </h3>
-                  <p className="text-sm leading-6 text-[#5C6B73] sm:text-[13px] sm:leading-5 dark:text-sand-100/70">
-                    {service.description}
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-1.5 text-[13px] font-medium text-[#5C6B73] dark:text-sand-100/60">
+              <div className="p-5">
+                <div className="flex items-center justify-between text-xs font-semibold text-ink-400 dark:text-sand-100/60">
+                  <span className="flex items-center gap-1.5 rounded bg-brand-500/10 px-2 py-1 text-brand-600 dark:bg-brand-500/20 dark:text-white">
                     <Clock className="size-3.5" />
                     {service.duration}
                   </span>
-                  <span className="text-[15px] font-bold text-brand-500">{service.price}</span>
+                  <span className="text-sm font-bold text-brand-500">{service.price}</span>
                 </div>
+                <h3 className="mt-3 font-bold text-ink-900 dark:text-white">{service.name}</h3>
+                <p className="mt-2 text-sm text-ink-500 dark:text-sand-100/70">
+                  {service.description}
+                </p>
               </div>
             </button>
           );
