@@ -32,6 +32,9 @@
 
   --color-sos-500: #e8573a;
 
+  --color-success-500: #3f9142;
+  --color-danger-500: #e0483a;
+
   --shadow-soft: 0 20px 45px -20px rgb(16 28 32 / 0.25);
 }
 
