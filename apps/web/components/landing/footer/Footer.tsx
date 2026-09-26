@@ -32,8 +32,8 @@ export function Footer() {
             className="h-24 w-auto"
           />
           <p className="mt-4 max-w-xs text-sm text-sand-100/70">
-            Garantindo as melhores abordagens em hipnoterapia clínica e psicologia para a
-            superação de perturbações emocionais em Luanda.
+            Garantindo as melhores abordagens em hipnoterapia clínica e
+            psicologia para a superação de perturbações emocionais em Luanda.
           </p>
           <div className="mt-5 flex gap-3">
             {SOCIAL_LINKS.map(({ label, href, Icon }) => (
@@ -54,15 +54,25 @@ export function Footer() {
         <div>
           <h3 className="font-bold text-white">Contacto &amp; Localização</h3>
           <ul className="mt-4 space-y-3 text-sm text-sand-100/70">
-            <li className="flex items-center gap-2">
-              <Mail className="size-4 shrink-0 text-brand-500" />
-              hipnosaveangola@gmail.com
+            <li className="flex items-center gap-2 underline">
+              <a
+                href="mailto:hipnosaveangola@gmail.com"
+                className="flex items-center gap-2 transition hover:text-white"
+              >
+                <Mail className="size-4 shrink-0 text-brand-500" />
+                hipnosaveangola@gmail.com
+              </a>
             </li>
-            <li className="flex items-center gap-2">
-              <Phone className="size-4 shrink-0 text-brand-500" />
-              +244 923 435 995
+            <li className="flex items-center gap-2 underline">
+              <a
+                href="tel:+244923435995"
+                className="flex items-center gap-2 transition hover:text-white"
+              >
+                <Phone className="size-4 shrink-0 text-brand-500 text-line" />
+                +244 923 435 995
+              </a>
             </li>
-            <li className="flex items-start gap-2">
+            <li className="flex items-start gap-2 underline">
               <MapPin className="mt-0.5 size-4 shrink-0 text-brand-500" />
               Rua 28 de Maio, Bairro da Maianga, Luanda, Angola
             </li>
@@ -73,7 +83,10 @@ export function Footer() {
           <h3 className="font-bold text-white">Horário de Funcionamento</h3>
           <ul className="mt-4 space-y-3 text-sm text-sand-100/70">
             {OPENING_HOURS.map((entry) => (
-              <li key={entry.days} className="flex items-center justify-between gap-4">
+              <li
+                key={entry.days}
+                className="flex items-center justify-between gap-4"
+              >
                 <span>{entry.days}</span>
                 <span className="text-sand-100/90">{entry.hours}</span>
               </li>
@@ -84,7 +97,10 @@ export function Footer() {
 
       <div className="mx-auto mt-12 max-w-6xl border-t border-white/10 px-4 pt-6 md:px-8">
         <div className="flex flex-col items-center justify-between gap-2 text-xs text-sand-100/50 sm:flex-row">
-          <p>© {new Date().getFullYear()} HipnoSave. Todos os direitos reservados.</p>
+          <p>
+            © {new Date().getFullYear()} HipnoSave. Todos os direitos
+            reservados.
+          </p>
           <p>
             Desenvolvido por{" "}
             <a
