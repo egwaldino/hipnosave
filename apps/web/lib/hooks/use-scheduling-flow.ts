@@ -1,17 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { getServiceBySlug } from "@/components/scheduling/service-selection/services-data";
+import { useRouter, useSearchParams } from "next/navigation";
+import { GENERAL_SERVICE, SOS_SERVICE } from "@/components/scheduling/service-selection/services-data";
 import {
   firstAvailableWeekday,
   formatDateTimeLabel,
 } from "@/components/scheduling/shared/format-date-time";
 
 export const SCHEDULING_STEPS = [
-  { id: "servico", label: "Serviço" },
   { id: "data-hora", label: "Data e Hora" },
-  { id: "dados", label: "Dados" },
+  { id: "dados", label: "Dados e Pagamento" },
   { id: "confirmacao", label: "Confirmação" },
 ] as const;
 
@@ -21,26 +20,20 @@ export type SchedulingModality = "presencial" | "online";
 
 export function useSchedulingFlow() {
   const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
-  const preselectedSlug = searchParams.get("servico");
-  const hasValidPreselection = Boolean(getServiceBySlug(preselectedSlug));
+  const isUrgent = searchParams.get("servico") === SOS_SERVICE.slug;
+  const selectedService = isUrgent ? SOS_SERVICE : GENERAL_SERVICE;
 
-  const [stepIndex, setStepIndex] = useState(hasValidPreselection ? 1 : 0);
-  const [selectedServiceSlug, setSelectedServiceSlug] = useState<string | null>(
-    hasValidPreselection ? preselectedSlug : null,
-  );
+  const [stepIndex, setStepIndex] = useState(0);
   const [selectedDate, setSelectedDate] = useState(() => firstAvailableWeekday(new Date()));
   const [selectedTime, setSelectedTime] = useState("14:00");
   const [selectedModality, setSelectedModality] = useState<SchedulingModality>("presencial");
 
-  function selectService(slug: string) {
-    setSelectedServiceSlug(slug);
-    setStepIndex(1);
-    router.replace(`${pathname}?servico=${slug}`, { scroll: false });
-  }
-
   function goToPreviousStep() {
+    if (stepIndex === 0) {
+      router.push("/");
+      return;
+    }
     setStepIndex((current) => Math.max(0, current - 1));
   }
 
@@ -48,18 +41,14 @@ export function useSchedulingFlow() {
     setStepIndex((current) => Math.min(SCHEDULING_STEPS.length - 1, current + 1));
   }
 
-  const selectedService = getServiceBySlug(selectedServiceSlug);
-  const isUrgent = selectedService?.isUrgent ?? false;
   const dateTimeLabel = formatDateTimeLabel(selectedDate, selectedTime);
   const modalityLabel = selectedModality === "presencial" ? "Presencial" : "Online";
 
   return {
     step: SCHEDULING_STEPS[stepIndex],
     stepIndex,
-    selectedServiceSlug,
     selectedService,
     isUrgent,
-    selectService,
     goToPreviousStep,
     goToNextStep,
     selectedDate,

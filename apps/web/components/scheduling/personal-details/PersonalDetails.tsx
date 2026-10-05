@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { usePersonalDetailsForm } from "@/lib/hooks/use-personal-details-form";
 import { CountryCodeSelect } from "./CountryCodeSelect";
+import { FaciPayPopupPreview } from "./FaciPayPopupPreview";
 import type { SchedulingService } from "../service-selection/services-data";
 import { ServiceSummary } from "../shared/ServiceSummary";
 
@@ -37,6 +39,8 @@ export function PersonalDetails({
     submit,
   } = usePersonalDetailsForm();
 
+  const [isPaymentPopupOpen, setIsPaymentPopupOpen] = useState(false);
+
   const primaryButtonClassName = isUrgent
     ? "bg-sos-500 hover:bg-sos-500/90"
     : "bg-brand-500 hover:bg-brand-600";
@@ -53,7 +57,7 @@ export function PersonalDetails({
   }`;
 
   function handleSubmit() {
-    submit(onNext);
+    submit(() => setIsPaymentPopupOpen(true));
   }
 
   return (
@@ -80,13 +84,13 @@ export function PersonalDetails({
             onClick={handleSubmit}
             className={`flex h-12 items-center justify-center gap-2 rounded-xl px-6 text-sm font-bold text-white transition ${primaryButtonClassName}`}
           >
-            Confirmar Marcação →
+            Confirmar e Pagar
           </button>
         </div>
       </div>
 
       <div className="mt-4 grid grid-cols-1 gap-6 lg:grid-cols-[1fr_440px]">
-        <div className="flex flex-col gap-2.5">
+        <div className="flex flex-col gap-2.5 rounded-2xl bg-white p-5 shadow-soft dark:bg-white/5">
           <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
             <div>
               <label className="mb-1 block text-sm font-bold text-ink-900 dark:text-white">
@@ -203,6 +207,15 @@ export function PersonalDetails({
           Confirmar →
         </button>
       </div>
+
+      {service && (
+        <FaciPayPopupPreview
+          amount={service.price}
+          open={isPaymentPopupOpen}
+          onOpenChange={setIsPaymentPopupOpen}
+          onSuccess={onNext}
+        />
+      )}
     </div>
   );
 }

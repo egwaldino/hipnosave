@@ -16,7 +16,7 @@ export function ServiceSelection({ selectedSlug, onSelect }: ServiceSelectionPro
           <h1 className="text-3xl font-extrabold text-ink-900 dark:text-white">
             Escolha o serviço
           </h1>
-          <p className="mt-2 text-ink-500 dark:text-sand-100/70">
+          <p className="mt-2 text-sm text-ink-500 dark:text-sand-100/70">
             Selecione a abordagem terapêutica adequada para a sua jornada de bem-estar mental.
           </p>
         </div>

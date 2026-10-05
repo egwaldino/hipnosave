@@ -7,7 +7,6 @@ import { useTheme } from "next-themes";
 import { useScrollHeader } from "@/lib/hooks/use-scroll-header";
 import { useSmoothScrollTo } from "@/lib/hooks/use-smooth-scroll-to";
 import { MobileMenu } from "./MobileMenu";
-import { SosDialog } from "./SosDialog";
 import { ThemeToggle } from "./ThemeToggle";
 
 export const NAV_LINKS = [
@@ -99,22 +98,16 @@ export function Header({ variant = "transparent", backHref }: HeaderProps) {
             className={`order-2 md:order-1 ${isScrolled ? "text-ink-900 dark:text-white" : "text-white"}`}
           />
 
-          <SosDialog
-            trigger={
-              <button
-                type="button"
-                aria-label="Contacto de emergência SOS"
-                className="order-1 flex h-6.25 w-15.5 cursor-pointer items-center justify-center gap-1.5 rounded-full bg-sos-500 text-xs font-bold text-white shadow-[0_0_20px_rgba(232,87,58,0.25)] md:order-2 md:h-11 md:w-auto md:justify-start md:gap-2 md:rounded-xl md:px-4 md:text-sm md:font-semibold md:text-[#f5f5f5]"
-              >
-                <span className="relative flex h-2 w-2 shrink-0 md:h-2.5 md:w-2.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
-                  <span className="relative inline-flex h-full w-full rounded-full bg-white" />
-                </span>
-                <span className="md:hidden">SOS</span>
-                <span className="hidden md:inline">Consulta SOS</span>
-              </button>
-            }
-          />
+          <button
+            type="button"
+            disabled
+            aria-label="Consulta SOS (temporariamente indisponível)"
+            className="order-1 flex h-6.25 w-15.5 cursor-not-allowed items-center justify-center gap-1.5 rounded-full bg-sos-500/40 text-xs font-bold text-white/70 md:order-2 md:h-11 md:w-auto md:justify-start md:gap-2 md:rounded-xl md:px-4 md:text-sm md:font-semibold"
+          >
+            <span className="relative flex h-2 w-2 shrink-0 rounded-full bg-white/70 md:h-2.5 md:w-2.5" />
+            <span className="md:hidden">SOS</span>
+            <span className="hidden md:inline">Consulta SOS</span>
+          </button>
 
           <Link
             href="/scheduling-page"

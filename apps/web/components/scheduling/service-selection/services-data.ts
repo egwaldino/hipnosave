@@ -124,6 +124,16 @@ export const SERVICES: SchedulingService[] = [
   },
 ];
 
+// TODO: valor fixo temporário enquanto o Bernardo não retoma a oferta por serviço/concern.
+export const GENERAL_SERVICE: SchedulingService = {
+  slug: "consulta-geral",
+  name: "Consulta de Psicologia e Hipnoterapia",
+  description:
+    "Sessão individual de avaliação e acompanhamento psicológico com Bernardo Cassuende.",
+  duration: "60 min",
+  price: "30.000 Kz",
+};
+
 export const SOS_SERVICE: SchedulingService = {
   slug: "sos",
   name: "Consulta SOS",

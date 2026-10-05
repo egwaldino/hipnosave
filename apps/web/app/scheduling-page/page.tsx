@@ -6,7 +6,7 @@ import { SchedulingSkeleton } from "@/components/scheduling/shared/SchedulingSke
 export const metadata: Metadata = {
   title: "Marcar Consulta — Hipnosave",
   description:
-    "Marque a sua consulta de psicologia e hipnoterapia em poucos passos: escolha o serviço, a data e hora, os seus dados e confirme a marcação.",
+    "Marque a sua consulta de psicologia e hipnoterapia em poucos passos: escolha a data e hora, os seus dados e confirme a marcação.",
 };
 
 export default function SchedulingPage() {

@@ -1,26 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { usePaginatedGrid } from "@/lib/hooks/use-paginated-grid";
 import { SectionHeading } from "../shared/SectionHeading";
 
 const CONCERNS = [
-  { name: "Depressão", slug: "depressao" },
-  { name: "Tabagismo", slug: "tabagismo" },
-  { name: "Medo de Falar em Público", slug: "medo-de-falar-em-publico" },
-  { name: "Fobias", slug: "fobias" },
-  { name: "Insônia", slug: "insonia" },
-  { name: "Burnout", slug: "burnout" },
-  { name: "Ansiedade", slug: "ansiedade" },
-  { name: "Ejaculação Precoce", slug: "ejaculacao-precoce" },
-  { name: "Frigidez", slug: "frigidez" },
-  { name: "Síndrome de Pânico", slug: "sindrome-de-panico" },
-  { name: "Anorexia", slug: "anorexia" },
-  { name: "Enxaqueca", slug: "enxaqueca" },
-  { name: "Bulimia", slug: "bulimia" },
-  { name: "Alcoolismo", slug: "alcoolismo" },
-  { name: "Luto Patológico", slug: "luto-patologico" },
+  { name: "depressao" },
+  { name: "tabagismo" },
+  { name: "medo-de-falar-em-publico" },
+  { name: "fobias" },
+  { name: "insonia" },
+  { name: "burnout" },
+  { name: "ansiedade" },
+  { name: "ejaculacao-precoce" },
+  { name: "frigidez" },
+  { name: "sindrome-de-panico" },
+  { name: "anorexia" },
+  { name: "enxaqueca" },
+  { name: "bulimia" },
+  { name: "alcoolismo" },
+  { name: "luto-patologico" },
 ];
 
 export function Services() {
@@ -43,18 +42,17 @@ export function Services() {
 
         <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6 lg:gap-15">
           {visibleItems.map((concern) => (
-            <Link
-              key={concern.slug}
-              href={`/scheduling-page?servico=${concern.slug}`}
+            <div
+              key={concern.name}
               className="relative block aspect-square transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-[1.03]"
             >
               <Image
-                src={`/services/${concern.slug}.webp`}
+                src={`/services/${concern.name}.webp`}
                 alt={concern.name}
                 fill
                 className="object-contain"
               />
-            </Link>
+            </div>
           ))}
         </div>
 
