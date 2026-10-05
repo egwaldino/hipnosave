@@ -138,7 +138,7 @@ export function Confirmation({
                   Investimento
                 </p>
                 <p className="font-bold text-ink-900 dark:text-white">
-                  {service.price} (Pago na clínica ou via transferência)
+                  {service.price}
                 </p>
               </div>
             </div>
