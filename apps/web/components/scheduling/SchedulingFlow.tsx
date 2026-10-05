@@ -4,17 +4,14 @@ import { useSchedulingFlow } from "@/lib/hooks/use-scheduling-flow";
 import { Confirmation } from "./confirmation/Confirmation";
 import { DateTimeSelection } from "./date-time/DateTimeSelection";
 import { PersonalDetails } from "./personal-details/PersonalDetails";
-import { ServiceSelection } from "./service-selection/ServiceSelection";
 import { SchedulingHeader } from "./shared/SchedulingHeader";
 
 export function SchedulingFlow() {
   const {
     step,
     stepIndex,
-    selectedServiceSlug,
     selectedService,
     isUrgent,
-    selectService,
     goToPreviousStep,
     goToNextStep,
     selectedDate,
@@ -36,10 +33,6 @@ export function SchedulingFlow() {
           step.id === "data-hora" || step.id === "dados" ? "pb-6 md:pb-8" : "pb-10 md:pb-14"
         }`}
       >
-        {step.id === "servico" && (
-          <ServiceSelection selectedSlug={selectedServiceSlug} onSelect={selectService} />
-        )}
-
         {step.id === "data-hora" && (
           <DateTimeSelection
             service={selectedService}
