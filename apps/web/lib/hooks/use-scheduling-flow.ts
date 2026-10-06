@@ -18,7 +18,11 @@ export type SchedulingStepId = (typeof SCHEDULING_STEPS)[number]["id"];
 
 export type SchedulingModality = "presencial" | "online";
 
-export function useSchedulingFlow() {
+interface UseSchedulingFlowOptions {
+  onExitFirstStep?: () => void;
+}
+
+export function useSchedulingFlow({ onExitFirstStep }: UseSchedulingFlowOptions = {}) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isUrgent = searchParams.get("servico") === SOS_SERVICE.slug;
@@ -31,7 +35,11 @@ export function useSchedulingFlow() {
 
   function goToPreviousStep() {
     if (stepIndex === 0) {
-      router.push("/");
+      if (onExitFirstStep) {
+        onExitFirstStep();
+      } else {
+        router.push("/");
+      }
       return;
     }
     setStepIndex((current) => Math.max(0, current - 1));
