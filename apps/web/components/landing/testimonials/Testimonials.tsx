@@ -3,6 +3,7 @@
 import { Star } from "lucide-react";
 import { useMarqueeScroll } from "@/lib/hooks/use-marquee-scroll";
 import { SectionHeading } from "../shared/SectionHeading";
+import { TestimonialSubmission } from "./TestimonialSubmission";
 
 const TESTIMONIALS = [
   {
@@ -102,6 +103,10 @@ export function Testimonials() {
           ))}
         </div>
       </div>
+
+      <div className="mt-14 border-t border-ink-200/60 dark:border-white/10" />
+
+      <TestimonialSubmission />
     </section>
   );
 }
