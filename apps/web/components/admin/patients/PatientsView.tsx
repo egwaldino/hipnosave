@@ -7,6 +7,7 @@ import { AnamnesePanel } from "./AnamnesePanel";
 import { ClinicalReportPanel } from "./ClinicalReportPanel";
 import { PatientDetail } from "./PatientDetail";
 import { PatientsTable } from "./PatientsTable";
+import { SessionSchedulingPanel } from "./SessionSchedulingPanel";
 
 const TODAY_LABEL = "Quarta-feira, 28 de Agosto 2026";
 
@@ -25,6 +26,7 @@ export function PatientsView() {
 
   const [isAnamneseOpen, setIsAnamneseOpen] = useState(false);
   const [isClinicalReportOpen, setIsClinicalReportOpen] = useState(false);
+  const [isSessionSchedulingOpen, setIsSessionSchedulingOpen] = useState(false);
 
   return (
     <div className="flex h-full flex-col">
@@ -51,6 +53,7 @@ export function PatientsView() {
           patient={selectedPatient}
           onOpenAnamnese={() => setIsAnamneseOpen(true)}
           onOpenClinicalReport={() => setIsClinicalReportOpen(true)}
+          onOpenSessionScheduling={() => setIsSessionSchedulingOpen(true)}
         />
       </div>
 
@@ -62,6 +65,13 @@ export function PatientsView() {
         <ClinicalReportPanel
           patient={selectedPatient}
           onClose={() => setIsClinicalReportOpen(false)}
+        />
+      )}
+
+      {isSessionSchedulingOpen && selectedPatient && (
+        <SessionSchedulingPanel
+          patient={selectedPatient}
+          onClose={() => setIsSessionSchedulingOpen(false)}
         />
       )}
     </div>

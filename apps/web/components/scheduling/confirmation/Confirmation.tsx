@@ -10,6 +10,8 @@ interface ConfirmationProps {
   selectedTime: string;
   isOnline: boolean;
   isUrgent: boolean;
+  onBackToStart?: () => void;
+  showAddToCalendar?: boolean;
 }
 
 export function Confirmation({
@@ -19,6 +21,8 @@ export function Confirmation({
   selectedTime,
   isOnline,
   isUrgent,
+  onBackToStart,
+  showAddToCalendar = true,
 }: ConfirmationProps) {
   const iconWrapperClassName = isUrgent
     ? "flex size-9 shrink-0 items-center justify-center rounded-lg bg-sos-500/10 text-sos-500"
@@ -47,20 +51,33 @@ export function Confirmation({
         </p>
 
         <div className="mt-8 flex flex-col-reverse gap-2 sm:flex-row sm:items-center sm:justify-center">
-          <Link
-            href="/"
-            className="flex h-12 items-center justify-center gap-1.5 rounded-xl border border-ink-900 px-6 text-sm font-bold whitespace-nowrap text-ink-900 transition hover:bg-ink-900 hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-ink-900"
-          >
-            <Home className="size-4 shrink-0" />
-            Voltar ao Início
-          </Link>
-          <AddToCalendarButton
-            service={service}
-            selectedDate={selectedDate}
-            selectedTime={selectedTime}
-            isOnline={isOnline}
-            isUrgent={isUrgent}
-          />
+          {onBackToStart ? (
+            <button
+              type="button"
+              onClick={onBackToStart}
+              className="flex h-12 items-center justify-center gap-1.5 rounded-xl border border-ink-900 px-6 text-sm font-bold whitespace-nowrap text-ink-900 transition hover:bg-ink-900 hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-ink-900"
+            >
+              <Home className="size-4 shrink-0" />
+              Voltar ao Painel
+            </button>
+          ) : (
+            <Link
+              href="/"
+              className="flex h-12 items-center justify-center gap-1.5 rounded-xl border border-ink-900 px-6 text-sm font-bold whitespace-nowrap text-ink-900 transition hover:bg-ink-900 hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-ink-900"
+            >
+              <Home className="size-4 shrink-0" />
+              Voltar ao Início
+            </Link>
+          )}
+          {showAddToCalendar && (
+            <AddToCalendarButton
+              service={service}
+              selectedDate={selectedDate}
+              selectedTime={selectedTime}
+              isOnline={isOnline}
+              isUrgent={isUrgent}
+            />
+          )}
         </div>
       </div>
 

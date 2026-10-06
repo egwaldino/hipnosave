@@ -1,18 +1,26 @@
 import Image from "next/image";
-import { FileText, Mail, Phone, ScrollText } from "lucide-react";
+import { CalendarClock, FileText, Mail, Phone, ScrollText } from "lucide-react";
+import { useSessionAttendance } from "@/lib/hooks/use-session-attendance";
 import type { Patient } from "./patients-data";
 
 interface PatientDetailProps {
   patient?: Patient;
   onOpenAnamnese: () => void;
   onOpenClinicalReport: () => void;
+  onOpenSessionScheduling: () => void;
 }
 
 export function PatientDetail({
   patient,
   onOpenAnamnese,
   onOpenClinicalReport,
+  onOpenSessionScheduling,
 }: PatientDetailProps) {
+  const { entries: sessionHistory, toggleAttendance } = useSessionAttendance(
+    patient?.id,
+    patient?.sessionHistory ?? [],
+  );
+
   if (!patient) {
     return (
       <div className="flex w-80 shrink-0 items-center justify-center rounded-2xl bg-white/5 p-6 text-center text-sm text-sand-100/50 shadow-soft">
@@ -63,40 +71,48 @@ export function PatientDetail({
           <ScrollText className="size-4 shrink-0" />
           Relatório Clínico
         </button>
+        <button
+          type="button"
+          onClick={onOpenSessionScheduling}
+          className="flex items-center gap-2.5 text-left text-brand-500 transition hover:text-brand-600"
+        >
+          <CalendarClock className="size-4 shrink-0" />
+          Agendar Sessões
+        </button>
       </div>
 
       <div className="mt-6 border-t border-white/10 pt-5">
         <h4 className="text-sm font-bold text-white">Histórico de Sessões</h4>
 
-        {patient.sessionHistory.length === 0 ? (
+        {sessionHistory.length === 0 ? (
           <p className="mt-3 text-xs text-sand-100/50">Sem sessões registadas.</p>
         ) : (
           <ul className="mt-3 flex flex-col gap-3">
-            {patient.sessionHistory.map((entry, index) => (
-              <li key={index} className="text-sm">
-                <span className="text-xs font-semibold text-brand-500">{entry.date}</span>
-                <p className="text-sand-100/90">{entry.label}</p>
-                <span
-                  className={`mt-1 inline-block rounded-full px-2 py-0.5 text-xs font-bold ${
-                    entry.attended
-                      ? "bg-success-500/15 text-success-500"
-                      : "bg-danger-500/15 text-danger-500"
-                  }`}
-                >
-                  {entry.attended ? "Compareceu" : "Faltou"}
+            {sessionHistory.map((entry, index) => (
+              <li key={index} className="flex items-start gap-3 text-sm">
+                <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs font-bold text-sand-100/80">
+                  {sessionHistory.length - index}
                 </span>
+                <div>
+                  <span className="text-xs font-semibold text-brand-500">{entry.date}</span>
+                  <p className="text-sand-100/90">{entry.label}</p>
+                  <button
+                    type="button"
+                    onClick={() => toggleAttendance(index)}
+                    className={`mt-1 inline-block rounded-full px-2 py-0.5 text-xs font-bold transition ${
+                      entry.attended
+                        ? "bg-success-500/15 text-success-500 hover:bg-success-500/25"
+                        : "bg-danger-500/15 text-danger-500 hover:bg-danger-500/25"
+                    }`}
+                  >
+                    {entry.attended ? "Compareceu" : "Faltou"}
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
         )}
       </div>
-
-      <button
-        type="button"
-        className="mt-6 flex h-11 shrink-0 items-center justify-center rounded-xl bg-brand-500 text-sm font-bold text-white transition hover:bg-brand-600"
-      >
-        Marcar Nova Consulta
-      </button>
     </div>
   );
 }

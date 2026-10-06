@@ -6,7 +6,17 @@ import { DateTimeSelection } from "./date-time/DateTimeSelection";
 import { PersonalDetails } from "./personal-details/PersonalDetails";
 import { SchedulingHeader } from "./shared/SchedulingHeader";
 
-export function SchedulingFlow() {
+interface SchedulingFlowProps {
+  onExitFirstStep?: () => void;
+  onBackToStart?: () => void;
+  showAddToCalendar?: boolean;
+}
+
+export function SchedulingFlow({
+  onExitFirstStep,
+  onBackToStart,
+  showAddToCalendar,
+}: SchedulingFlowProps = {}) {
   const {
     step,
     stepIndex,
@@ -22,7 +32,7 @@ export function SchedulingFlow() {
     setSelectedModality,
     dateTimeLabel,
     modalityLabel,
-  } = useSchedulingFlow();
+  } = useSchedulingFlow({ onExitFirstStep });
 
   return (
     <div className="min-h-screen bg-sand-50 dark:bg-ink-900">
@@ -68,6 +78,8 @@ export function SchedulingFlow() {
             selectedTime={selectedTime}
             isOnline={selectedModality === "online"}
             isUrgent={isUrgent}
+            onBackToStart={onBackToStart}
+            showAddToCalendar={showAddToCalendar}
           />
         )}
       </div>
